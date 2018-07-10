@@ -11,7 +11,7 @@ services:
       context: ./app
       dockerfile: ./dockerfile/Dockerfile.dev
     image: quiz:dev
-    command: rails server -p 3000 -b '0.0.0.0'
+    command: ./script/start.sh
     volumes:
     - quiz-volume-sync:/app:nocopy
     ports:
