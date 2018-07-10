@@ -1,0 +1,38 @@
+FROM ruby:2.5.1-alpine
+
+ENV HOME=/app \
+    LANG=en_US.UTF-8
+
+RUN adduser -D -G root -h $HOME -s /bin/sh -S -u 1001 quiz && \
+    chown -R 1001:0 $HOME && \
+    apk update --no-cache && \
+    apk upgrade --no-cache && \
+    apk add --no-cache build-base \
+      ca-certificates \
+      libressl-dev \
+      libxml2-dev \
+      libxslt-dev \
+		  linux-headers \
+      ncurses-dev \
+      nodejs-current \
+      openssh \
+      postgresql-dev \
+      tzdata \
+      zlib-dev && \
+    update-ca-certificates --fresh
+
+USER 1001:0
+
+WORKDIR $HOME
+
+COPY --chown=1001:0 ./Gemfile* $HOME/
+
+RUN echo "gem: --no-document" > $HOME/.gemrc
+RUN bundle config build.nokogiri --use-system-libraries
+RUN bundle install
+
+COPY . $HOME
+
+EXPOSE 3000
+
+CMD ["/bin/sh"]
