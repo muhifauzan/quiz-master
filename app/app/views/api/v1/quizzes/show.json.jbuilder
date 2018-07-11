@@ -1,1 +1,1 @@
-json.partial! 'api_v1_quizzes/quiz', quiz: @quiz
+json.partial! 'api/v1/quizzes/quiz', quiz: @quiz

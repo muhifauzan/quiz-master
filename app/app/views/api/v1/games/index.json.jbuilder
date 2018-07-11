@@ -1,1 +1,1 @@
-json.array! @games, partial: 'api_v1_games/game', as: :game
+json.messages @games, partial: 'api/v1/games/game', as: :game

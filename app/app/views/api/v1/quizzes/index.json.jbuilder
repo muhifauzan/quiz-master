@@ -1,1 +1,1 @@
-json.array! @quizzes, partial: 'api_v1_quizzes/quiz', as: :quiz
+json.messages @quizzes, partial: 'api/v1/quizzes/quiz', as: :quiz
