@@ -1,6 +1,6 @@
 import React from 'react'
-import {NewQuiz} from './NewQuiz'
-import {Quizzes} from './Quizzes'
+import { NewQuiz } from './NewQuiz'
+import { Quizzes } from './Quizzes'
 
 export default class Body extends React.Component {
   constructor(props) {
