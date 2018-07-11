@@ -1,16 +1,13 @@
 class Api::V1::QuizzesController < ApplicationController
   before_action :set_quiz, only: [:show, :update, :destroy]
 
-  # GET /api/v1/quizzes.json
   def index
     @quizzes = Api::V1::Quiz.all
   end
 
-  # GET /api/v1/quizzes/1.json
   def show
   end
 
-  # POST /api/v1/quizzes.json
   def create
     @quiz = Api::V1::Quiz.new(quiz_params)
 
@@ -21,7 +18,6 @@ class Api::V1::QuizzesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/quizzes/1.json
   def update
     if @quiz.update(quiz_params)
       render :show, status: :ok, location: @quiz
@@ -30,7 +26,6 @@ class Api::V1::QuizzesController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/quizzes/1.json
   def destroy
     @quiz.destroy
   end

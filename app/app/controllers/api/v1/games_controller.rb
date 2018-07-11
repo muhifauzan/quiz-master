@@ -1,14 +1,12 @@
 class Api::V1::GamesController < ApplicationController
   before_action :set_game
 
-  # GET /api/v1/games.json
   def show
     quizzes = Api::V1::Quiz.all.pluck(:id)
 
     render :json, status: :ok, game: QuizFethcer.new(@game, quizzes).get_question
   end
 
-  # PATCH/PUT /api/v1/games.json
   def update
     quiz = Api::V1::Quiz.find(game_params.fetch(:quiz_id))
     result = GameCalculator.new(@game, quiz, game_params.fetch(:answer)).latest_result
